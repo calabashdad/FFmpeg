@@ -163,6 +163,7 @@ int ff_hevc_set_new_ref(HEVCContext *s, AVFrame **frame, int poc)
 
     ref->poc      = poc;
     ref->sequence = s->seq_decode;
+    ref->frame->coded_picture_number = poc;
     ref->frame->crop_left   = s->ps.sps->output_window.left_offset;
     ref->frame->crop_right  = s->ps.sps->output_window.right_offset;
     ref->frame->crop_top    = s->ps.sps->output_window.top_offset;
