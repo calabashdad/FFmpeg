@@ -37,3 +37,5 @@
 /src
 /mapfile
 /tools/python/__pycache__/
+.idea/
+compile_commands.json
