@@ -61,6 +61,12 @@ version <next>:
 - WebP parser
 - tmedian filter
 - maskedthreshold filter
+- Support for muxing pcm and pgs in m2ts
+- Cunning Developments ADPCM decoder
+- asubboost filter
+- Pro Pinball Series Soundbank demuxer
+- pcm_rechunk bitstream filter
+- scdet filter
 
 
 version 4.2:

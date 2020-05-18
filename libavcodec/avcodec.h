@@ -531,6 +531,11 @@ typedef struct RcOverride{
  * Export encoder Producer Reference Time through packet side data
  */
 #define AV_CODEC_EXPORT_DATA_PRFT        (1 << 1)
+/**
+ * Decoding only.
+ * Export the AVVideoEncParams structure through frame side data.
+ */
+#define AV_CODEC_EXPORT_DATA_VIDEO_ENC_PARAMS (1 << 2)
 
 /**
  * Pan Scan area.
@@ -2541,6 +2546,10 @@ enum {
      * AVCodecContext.hw_frames_ctx should be set to a suitable frames
      * context inside the get_format() callback.  The frames context
      * must have been created on a device of the specified type.
+     *
+     * When selecting this format for an encoder,
+     * AVCodecContext.hw_frames_ctx should be set to the context which
+     * will be used for the input frames before calling avcodec_open2().
      */
     AV_CODEC_HW_CONFIG_METHOD_HW_FRAMES_CTX = 0x02,
     /**
@@ -2563,7 +2572,12 @@ enum {
 
 typedef struct AVCodecHWConfig {
     /**
-     * A hardware pixel format which the codec can use.
+     * For decoders, a hardware pixel format which that decoder may be
+     * able to decode to if suitable hardware is available.
+     *
+     * For encoders, a pixel format which the encoder may be able to
+     * accept.  If set to AV_PIX_FMT_NONE, this applies to all pixel
+     * formats supported by the codec.
      */
     enum AVPixelFormat pix_fmt;
     /**

@@ -32,6 +32,10 @@
 
 typedef enum {
     DMBO_SUB = 0,
+    DMBO_ADD = 1,
+    DMBO_MUL = 2,
+    DMBO_REALDIV = 3,
+    DMBO_MINIMUM = 4,
     DMBO_COUNT
 } DNNMathBinaryOperation;
 
